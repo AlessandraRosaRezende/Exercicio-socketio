@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="http://localhost:4555/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Mural</h1>
+    <ul id="mural"></ul>
+    <script>
+      const socket = io('http://localhost:4555');
+      socket.on('mural', (data) => {
+        const li = document.createElement('li');
+        console.log("aqui");
+        data.map((info)=>{
+        console.log('entrei');
+        const liText = document.createTextNode(` ${info.post}`);
+        li.append(liText);
+        document.getElementById('mural').appendChild(li);
+        });
+      });
+    
+    </script>
+  </body>
+</html>
